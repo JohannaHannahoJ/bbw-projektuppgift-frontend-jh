@@ -8,7 +8,7 @@ Länk till applikationen:
 
 Detta projekt är frontend-delen av slutuppgiften i kursen "Backend-baserad webbutveckling" vid Mittuniversitetet. Uppgiften går ut på att skapa en webbplats för en restaurant.
 
-Den andra delen, backend, finns här: 
+Den andra delen, backend, finns här: https://github.com/JohannaHannahoJ/bbw-projektuppgift-jh
 
 ## Projektstruktur
 
