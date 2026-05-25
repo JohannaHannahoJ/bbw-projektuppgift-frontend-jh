@@ -1,1 +1,9 @@
-<p>category-management works!</p>
+<h3>Lägg till kategori</h3>
+
+<form (ngSubmit)="addCategory()">
+
+  <input type="text" [(ngModel)]="name" name="name" placeholder="Ny kategori..." required>
+
+  <button type="submit">Spara</button>
+
+</form>

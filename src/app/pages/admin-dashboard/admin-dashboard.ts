@@ -1,9 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
+import { CategoryManagement } from '../../components/category-management/category-management';
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [],
+  imports: [CategoryManagement],
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.css',
 })
