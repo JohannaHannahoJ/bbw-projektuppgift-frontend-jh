@@ -15,6 +15,7 @@ export class AuthService {
   token = signal(localStorage.getItem("token") || "");
   username = signal(localStorage.getItem("username") || "");
   isAdmin = signal(localStorage.getItem("is_admin") === "true");
+
   isLoggedIn = computed(() => !!this.token());
 
   router = inject(Router);
@@ -40,7 +41,14 @@ export class AuthService {
     this.isAdmin.set(false);
 
     localStorage.clear();
-    
+
     this.router.navigate(["/login"]);
+  }
+ 
+  //Skapa Authorization header med aktuell JWT-token
+  getAuthHeaders() {
+    return {
+      Authorization: `Bearer ${this.token()}`
+    };
   }
 }
