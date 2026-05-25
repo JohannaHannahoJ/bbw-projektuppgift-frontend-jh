@@ -1,6 +1,6 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { Category } from '../models/category';
 import { AuthService } from './auth.service';
 
@@ -8,17 +8,29 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class CategoryService {
-
-  private http = inject(HttpClient);
-
+  http = inject(HttpClient);
   url: string = "http://localhost:3000/api/categories";
 
   // Auth-hantering (token, headers, login state)
-  private authService = inject(AuthService);
+  authService = inject(AuthService);
 
-  // Hämta alla kategorier
-  getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.url);
+  // Signal som lagrar kategorier
+  categories = signal<Category[]>([]);
+
+  // Hämta kategorier från API
+  async loadCategories(): Promise<void> {
+
+    try {
+      // skicka request till API
+      const data = await firstValueFrom(
+        this.http.get<Category[]>(this.url)
+      );
+      // sparar katergorier i signalen
+      this.categories.set(data);
+
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // Skapa kategori
