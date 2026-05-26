@@ -1,10 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { CategoryManagement } from '../../components/category-management/category-management';
+import { MenuManagement } from '../../components/menu-management/menu-management';
+import { MenuForm } from "../../components/menu-form/menu-form";
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [CategoryManagement],
+  imports: [CategoryManagement, MenuManagement, MenuForm],
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.css',
 })
@@ -27,4 +29,6 @@ export class AdminDashboard {
       localStorage.removeItem("flashMessage");
     }
   }
+
+  activeSection: 'menu' | 'categories' | 'add' = 'menu';
 }
