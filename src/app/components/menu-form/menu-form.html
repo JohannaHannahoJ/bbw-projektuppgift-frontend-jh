@@ -1,8 +1,12 @@
-<h2>Menyhantering</h2>
+<h2>
+    @if (selectedItem) {
+        Uppdatera rätt
+    } @else {
+        Lägg till rätt
+    }
+</h2>
 
-<p>{{ message() }}</p>
-
-<form (ngSubmit)="addMenuItem()">
+<form (ngSubmit)="saveMenuItem()">
     <div class="form-row">
         <label for="name">Namn</label>
         <input type="text" [(ngModel)]="name" id="name" name="name" placeholder="Namn" required>
@@ -39,7 +43,11 @@
     <p class="message">{{ message() }}</p>
 
     <button type="submit">
-        Spara
+        @if (selectedItem) {
+        Uppdatera
+        } @else {
+        Lägg till
+        }
     </button>
 
 </form>

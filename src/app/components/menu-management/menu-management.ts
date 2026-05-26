@@ -1,15 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { MenuService } from '../../core/services/menu.service';
 import { MenuItem } from '../../core/models/menu-item';
+import { MenuForm } from "../menu-form/menu-form";
+import { CategoryService } from '../../core/services/category.service';
 
 @Component({
   selector: 'app-menu-management',
-  imports: [],
+  imports: [MenuForm],
   templateUrl: './menu-management.html',
   styleUrl: './menu-management.css',
 })
 export class MenuManagement {
   menuService = inject(MenuService);
+  categoryService =inject(CategoryService);
 
   // Hämta signal från service som listar meny-items
   menuItems = this.menuService.menuItems;
@@ -20,14 +23,14 @@ export class MenuManagement {
   ngOnInit() {
     // läser in items vid sidladdning
     this.menuService.loadMenuItems();
+    // läser in kategorier
+    this.categoryService.loadCategories();
   }
 
   // Regigera meny-item
   editItem(item: MenuItem) {
     //sparar valt item
     this.selectedItem = item;
-    // form kommer
-    console.log("Edit item:", item);
   }
 
   // ta bort item
@@ -36,19 +39,5 @@ export class MenuManagement {
       // ladda om listan efter delete
       this.menuService.loadMenuItems();
     });
-  }
-
-  // Uppdatera 
-  updateMenuItem(updatedItem: MenuItem) {
-    if (!this.selectedItem) return;
-
-    // skickar uppdaterat item till db
-    this.menuService.updateMenuItem(this.selectedItem.id!, updatedItem)
-      .subscribe(() => {
-        // Ladda om lista vid update
-        this.menuService.loadMenuItems();
-        // Rensa redigera
-        this.selectedItem = null;
-      });
   }
 }
