@@ -44,11 +44,19 @@ export class AuthService {
 
     this.router.navigate(["/login"]);
   }
- 
+
   //Skapa Authorization header med aktuell JWT-token
   getAuthHeaders() {
     return {
       Authorization: `Bearer ${this.token()}`
     };
+  }
+
+  // Funktion som loggar ut och redirectar om token saknas eller är ogiltig
+  handleAuthError(error: any) {
+    if (error.status === 401 || error.status === 403) {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }
   }
 }

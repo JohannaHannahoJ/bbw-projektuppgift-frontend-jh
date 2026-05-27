@@ -29,6 +29,7 @@ export class CategoryService {
       this.categories.set(data);
 
     } catch (error) {
+      this.authService.handleAuthError(error);
       console.error(error);
     }
   }

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MenuService } from '../../core/services/menu.service';
 import { CategoryService } from '../../core/services/category.service';
 import { MenuItem } from '../../core/models/menu-item';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-menu-form',
@@ -19,6 +20,7 @@ export class MenuForm {
   category_id: number = 0;
 
   message = signal(""); // För meddelanden i frontend
+  authService = inject(AuthService);
 
   // spar vilket item som redigeras
   private _selectedItem: MenuItem | null = null;
@@ -82,6 +84,7 @@ export class MenuForm {
         },
 
         error: (error) => {
+          this.authService.handleAuthError(error);
           this.message.set(error.error.message);
         }
       });
@@ -99,6 +102,7 @@ export class MenuForm {
         },
 
         error: (error) => {
+          this.authService.handleAuthError(error);
           this.message.set(error.error.message);
         }
       });

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CategoryService } from '../../core/services/category.service';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-category-management',
@@ -10,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CategoryManagement {
   categoryService = inject(CategoryService);
+  authService = inject(AuthService);
 
   name: string = "";
 
@@ -27,6 +29,7 @@ export class CategoryManagement {
         },
 
         error: (error) => {
+          this.authService.handleAuthError(error);
           console.error(error);
         }
       });

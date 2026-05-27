@@ -30,6 +30,7 @@ export class MenuService {
       this.menuItems.set(items);
 
     } catch (error) {
+      this.authService.handleAuthError(error);
       console.error(error);
     }
   }

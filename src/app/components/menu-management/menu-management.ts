@@ -12,7 +12,7 @@ import { CategoryService } from '../../core/services/category.service';
 })
 export class MenuManagement {
   menuService = inject(MenuService);
-  categoryService =inject(CategoryService);
+  categoryService = inject(CategoryService);
 
   // Hämta signal från service som listar meny-items
   menuItems = this.menuService.menuItems;
@@ -35,9 +35,20 @@ export class MenuManagement {
 
   // ta bort item
   deleteItem(id: number) {
-    this.menuService.deleteMenuItem(id).subscribe(() => {
-      // ladda om listan efter delete
-      this.menuService.loadMenuItems();
+    // anropa service för att ta bort item från databasen
+    this.menuService.deleteMenuItem(id).subscribe({
+      // om req lyckas
+      next: () => {
+        // ladda om liostan så UI uppdateras
+        this.menuService.loadMenuItems();
+      },
+      // felhantering
+      error: (error) => {
+        // auth-fel, logga ut och redirect
+        this.menuService.authService.handleAuthError(error);
+        console.error(error);
+      }
     });
   }
 }
+
