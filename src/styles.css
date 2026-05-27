@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text: #000000;
+    --bg: #F8F8EC;
+    --green: #28743B;
+    --orange: #DC531B;
+    --yellow: #F2B338;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    margin: 0;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    margin: 0;
+}
+
+app-root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    color: var(--text);
+    background-color: var(--bg);
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.5;
+}
