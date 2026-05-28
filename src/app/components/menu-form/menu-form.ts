@@ -4,6 +4,7 @@ import { MenuService } from '../../core/services/menu.service';
 import { CategoryService } from '../../core/services/category.service';
 import { MenuItem } from '../../core/models/menu-item';
 import { AuthService } from '../../core/services/auth.service';
+import { CreateMenuItem } from '../../core/models/create-menu-item';
 
 @Component({
   selector: 'app-menu-form',
@@ -59,7 +60,7 @@ export class MenuForm {
   saveMenuItem(): void {
 
     // bygger ett objekt från formuläret
-    const menuItem: MenuItem = {
+    const menuItem: CreateMenuItem = {
       name: this.name,
       price: this.price,
       description: this.description,

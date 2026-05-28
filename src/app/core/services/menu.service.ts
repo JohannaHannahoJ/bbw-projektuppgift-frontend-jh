@@ -3,6 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { AuthService } from './auth.service';
 import { firstValueFrom } from 'rxjs';
 import { MenuItem } from '../models/menu-item';
+import { CreateMenuItem } from '../models/create-menu-item';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,7 @@ export class MenuService {
         this.http.get<MenuItem[]>(this.url)
       );
 
-      //Sparar kurser i signalen
+      //Sparar menu-items i signalen
       this.menuItems.set(items);
 
     } catch (error) {
@@ -36,14 +37,14 @@ export class MenuService {
   }
 
   // Skapa meny-item/ rätt
-  addMenuItem(menuItem: MenuItem) {
+  addMenuItem(menuItem: CreateMenuItem) {
     return this.http.post(this.url, menuItem, {
       headers: this.authService.getAuthHeaders()
     });
   }
 
   // Uppdatera Meny-item/rätt
-  updateMenuItem(id: number, item: MenuItem) {
+  updateMenuItem(id: number, item: CreateMenuItem) {
     return this.http.put(`${this.url}/${id}`, item, {
       headers: this.authService.getAuthHeaders()
     });
