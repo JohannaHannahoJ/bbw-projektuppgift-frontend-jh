@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { firstValueFrom, Observable } from 'rxjs';
 import { Category } from '../models/category';
 import { AuthService } from './auth.service';
+import { CreateCategory } from '../models/create-category';
 
 @Injectable({
   providedIn: 'root'
@@ -35,14 +36,14 @@ export class CategoryService {
   }
 
   // Skapa kategori
-  addCategory(category: { name: string }) {
-    return this.http.post(this.url, category, {
+  addCategory(createCategory: CreateCategory) {
+    return this.http.post(this.url, createCategory, {
       headers: this.authService.getAuthHeaders()
     });
   }
 
   // Uppdatera kategori
-  updateCategory(id: number, category: { name: string }) {
+  updateCategory(id: number, category: CreateCategory) {
     return this.http.put(`${this.url}/${id}`, category, {
       headers: this.authService.getAuthHeaders()
     });

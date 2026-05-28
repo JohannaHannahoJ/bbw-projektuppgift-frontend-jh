@@ -7,7 +7,7 @@
             <h3>{{ category.name }}</h3>
         </div>
 
-        @for (item of getItemsByCategory(category.id!); track item.id) {
+        @for (item of getItemsByCategory(category.id); track item.id) {
             <div class="menu-item">
                 <div class="menu-section">
                     <h4>{{ item.name }}</h4>
