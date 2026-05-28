@@ -13,8 +13,12 @@ export class Header {
 
   // funktion som returnerar vilken sidtyp man är på
   get pageType(): 'home' | 'admin' | '404' {
-    if (this.router.url === '/404') return '404';
-    if (this.router.url === '/home') return 'home';
+    // ignorera delen efter # för sidnavigeringen ska funka
+    const url = this.router.url;
+
+    if (url.includes('/404')) return '404';
+    if (url.includes('/home')) return 'home';
+    
     return 'admin';
   }
 }
