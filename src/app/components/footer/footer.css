@@ -1,0 +1,31 @@
+.footer {
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    padding: 2rem;
+    background: var(--text);
+}
+
+.footer-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 220px;
+    height: auto;
+    z-index: 1;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: right;
+    color: var(--bg);
+
+    max-width: 220px;
+}
