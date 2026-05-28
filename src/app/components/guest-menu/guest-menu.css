@@ -1,3 +1,9 @@
+.error {
+    font-weight: 600;
+    padding: 1rem;
+    border: 1px solid var(--orange);
+}
+
 .menu {
     max-width: 900px;
     margin: 40px auto;

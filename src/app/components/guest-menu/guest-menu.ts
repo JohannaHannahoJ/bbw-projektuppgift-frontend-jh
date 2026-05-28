@@ -17,6 +17,8 @@ export class GuestMenu {
   menuItems = this.menuService.menuItems;
   categories = this.categoryService.categories;
 
+  menuError = this.menuService.errorMessage;
+
   ngOnInit() {
     this.menuService.loadMenuItems();
     this.categoryService.loadCategories();

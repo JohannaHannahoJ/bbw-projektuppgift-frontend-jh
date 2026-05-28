@@ -18,6 +18,9 @@ export class MenuService {
   // Signal som lagrar meny-items
   menuItems = signal<MenuItem[]>([]);
 
+  // signal för felhantering
+  errorMessage = signal("");
+
   // Hämta meny-items
   async loadMenuItems(): Promise<void> {
 
@@ -32,6 +35,7 @@ export class MenuService {
 
     } catch (error) {
       this.authService.handleAuthError(error);
+      this.errorMessage.set("Just nu går det inte att läsa menyn. Försök igen senare.");
       console.error(error);
     }
   }
