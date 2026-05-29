@@ -119,6 +119,8 @@ export class MenuForm {
     this.category_id = 0;
 
     this._selectedItem = null;
+
+    this.message.set("");
   }
 
 }

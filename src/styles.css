@@ -42,3 +42,9 @@ body {
     font-family: 'Quicksand', sans-serif;
     line-height: 1.5;
 }
+
+.message {
+    font-weight: 600;
+    padding: 1rem;
+    border: 1px solid var(--orange);
+}

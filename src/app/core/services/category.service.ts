@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { Category } from '../models/category';
 import { AuthService } from './auth.service';
 import { CreateCategory } from '../models/create-category';
@@ -17,6 +17,9 @@ export class CategoryService {
 
   // Signal som lagrar kategorier
   categories = signal<Category[]>([]);
+  //Signal för felmeddelnaden
+  errorMessage = signal("");
+
 
   // Hämta kategorier från API
   async loadCategories(): Promise<void> {
@@ -28,9 +31,11 @@ export class CategoryService {
       );
       // sparar katergorier i signalen
       this.categories.set(data);
+      this.errorMessage.set(""); // töm ev felmeddelande
 
     } catch (error) {
       this.authService.handleAuthError(error);
+      this.errorMessage.set("Kunde inte ladda kategorier just nu.");
       console.error(error);
     }
   }

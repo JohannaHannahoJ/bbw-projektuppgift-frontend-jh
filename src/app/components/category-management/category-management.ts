@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CategoryService } from '../../core/services/category.service';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
@@ -14,6 +14,7 @@ export class CategoryManagement {
   authService = inject(AuthService);
 
   name: string = "";
+  message = signal("");
 
   addCategory(): void {
 
@@ -25,11 +26,12 @@ export class CategoryManagement {
       .subscribe({
         next: () => {
           this.name = "";
-          console.log("Kategori skapad");
+          this.message.set("Kategori skapad");
         },
 
         error: (error) => {
           this.authService.handleAuthError(error);
+          this.message.set(error.error?.message ?? "Något gick fel");
           console.error(error);
         }
       });

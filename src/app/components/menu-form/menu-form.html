@@ -1,8 +1,8 @@
 <h2>
     @if (selectedItem) {
-        Uppdatera rätt
+    Uppdatera rätt
     } @else {
-        Lägg till rätt
+    Lägg till rätt
     }
 </h2>
 
@@ -40,7 +40,7 @@
         </label>
     </div>
 
-    <p class="message">{{ message() }}</p>
+    @if (message()) {<p class="message">{{ message() }}</p>}
 
     <button type="submit">
         @if (selectedItem) {

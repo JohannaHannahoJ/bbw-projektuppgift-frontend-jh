@@ -1,5 +1,9 @@
 <h3>Lägg till kategori</h3>
 
+@if (message()) {
+  <p class="message">{{ message() }}</p>
+}
+
 <form (ngSubmit)="addCategory()">
 
   <input type="text" [(ngModel)]="name" name="name" placeholder="Ny kategori..." required>
