@@ -46,4 +46,19 @@ export class MessageService {
     return this.http.post<ApiResponse>(this.url, message);
   }
 
+  // markera som hanterad
+  markAsHandled(id: number) {
+    return this.http.put(
+      `${this.url}/${id}/handled`, {}, {
+      headers: this.authService.getAuthHeaders()
+    });
+  }
+
+  // ta bort
+  deleteMessage(id: number) {
+    return this.http.delete(
+      `${this.url}/${id}`, {
+      headers: this.authService.getAuthHeaders()
+    });
+  }
 }
