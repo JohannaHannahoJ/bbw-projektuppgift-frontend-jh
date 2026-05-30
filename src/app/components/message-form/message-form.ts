@@ -38,6 +38,11 @@ export class MessageForm {
       // lyckad request
       next: (response: ApiResponse) => {
         this.statusMessage.set(response.message);
+
+        setTimeout(() => {
+          this.statusMessage.set("");
+        }, 2500);
+        
         // töm formuläret
         this.name = "";
         this.email = "";

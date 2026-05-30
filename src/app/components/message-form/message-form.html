@@ -4,10 +4,11 @@
 
 <form (ngSubmit)="addMessage()">
 
+    <label for="name">Namn</label>
     <input type="text" [(ngModel)]="name" name="name" placeholder="Namn" required>
-
+    <label for="email">E-post</label>
     <input type="email" [(ngModel)]="email" name="email" placeholder="E-post" required>
-
+    <label for="message">Meddelande</label>
     <textarea [(ngModel)]="message" name="message" placeholder="Skriv ditt meddelande..." required></textarea>
 
     <button type="submit">
