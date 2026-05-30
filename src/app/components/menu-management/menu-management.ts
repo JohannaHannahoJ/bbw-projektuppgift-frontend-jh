@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MenuService } from '../../core/services/menu.service';
 import { MenuItem } from '../../core/models/menu-item';
 import { MenuForm } from "../menu-form/menu-form";
 import { CategoryService } from '../../core/services/category.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-menu-management',
@@ -13,6 +14,10 @@ import { CategoryService } from '../../core/services/category.service';
 export class MenuManagement {
   menuService = inject(MenuService);
   categoryService = inject(CategoryService);
+  authService = inject(AuthService);
+
+  // UI-meddelande
+  statusMessage = signal("");
 
   // Hämta signal från service som listar meny-items
   menuItems = this.menuService.menuItems;
@@ -39,14 +44,15 @@ export class MenuManagement {
     this.menuService.deleteMenuItem(id).subscribe({
       // om req lyckas
       next: () => {
-        // ladda om liostan så UI uppdateras
+        this.statusMessage.set("Rätt raderad.");
+        // ladda om listan så UI uppdateras
         this.menuService.loadMenuItems();
       },
       // felhantering
       error: (error) => {
         // auth-fel, logga ut och redirect
         this.menuService.authService.handleAuthError(error);
-        console.error(error);
+        this.statusMessage.set(error.error?.message ?? "Kunde inte radera rätten.");
       }
     });
   }
