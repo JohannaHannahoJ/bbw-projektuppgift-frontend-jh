@@ -17,7 +17,8 @@
                 autocomplete="current-password">
         </div>
 
-        <p class="message">{{ message() }}</p>
+        @if (message()) {<p class="message">{{ message() }}</p>}
+
 
         <button type="submit">
             Logga in

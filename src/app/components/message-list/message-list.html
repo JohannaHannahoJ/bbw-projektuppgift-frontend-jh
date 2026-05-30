@@ -1,1 +1,15 @@
-<p>message-list works!</p>
+<h2>Nya meddelanden</h2>
+
+@for (message of messages(); track message.id) {
+
+<div class="message-card">
+
+    <h3>{{ message.name }}</h3>
+
+    <a [href]="'mailto:' + message.email">{{ message.email }}</a>
+
+    <p>{{ message.message }}</p>
+
+</div>
+
+}

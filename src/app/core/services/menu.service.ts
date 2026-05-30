@@ -25,16 +25,17 @@ export class MenuService {
   async loadMenuItems(): Promise<void> {
 
     try {
-      // skickar rquest till API
+      // skickar request till API
       const items = await firstValueFrom(
         this.http.get<MenuItem[]>(this.url)
       );
 
       //Sparar menu-items i signalen
       this.menuItems.set(items);
+      this.errorMessage.set(""); // töm ev felmeddelande
+
 
     } catch (error) {
-      this.authService.handleAuthError(error);
       this.errorMessage.set("Just nu går det inte att läsa menyn. Försök igen senare.");
       console.error(error);
     }
