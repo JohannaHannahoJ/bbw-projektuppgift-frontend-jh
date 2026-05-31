@@ -1,0 +1,37 @@
+.about {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.about p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.gallery {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    padding: 2rem;
+    scroll-behavior: smooth;
+}
+
+.gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery img {
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .gallery {
+        overflow: visible;
+        justify-content: space-between;
+    }
+}
