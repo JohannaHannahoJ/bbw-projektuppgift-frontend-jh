@@ -1,21 +1,20 @@
-<h2>Redigera meny</h2>
-
 @if (selectedItem) {
 <app-menu-form [selectedItem]="selectedItem" (closeEdit)="selectedItem = null"></app-menu-form>
 }
 
 @for(item of menuItems(); track item.id) {
 
-<div>
+<div class="menu-item">
 
-  <h3>{{ item.name }}</h3>
+  <div class="menu-info">
+    <h3>{{ item.name }}</h3>
 
-  <p>{{ item.description }}</p>
+    <p>{{ item.description }}</p>
 
-  <p>{{ item.price }} kr</p>
+    <p>{{ item.price }} kr</p>
+  </div>
 
   <div class="button-group">
-
     <button (click)="editItem(item)">
       Redigera
     </button>

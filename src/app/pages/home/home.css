@@ -1,3 +1,20 @@
+.hero {
+  text-align: center;
+  font-weight: 600;
+}
+
+.tagline {
+
+  font-style: italic;
+  color: var(--green);
+  margin-bottom: 0.5rem;
+}
+
+.info-line {
+  margin-bottom: 1rem;
+
+}
+
 .hero-image {
   width: 100%;
   height: auto;

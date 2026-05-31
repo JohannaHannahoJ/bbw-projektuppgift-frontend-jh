@@ -17,7 +17,7 @@
     <h3>{{ message.name }}</h3>
     <p class="date">{{ message.created_at | date:'yyyy-MM-dd HH:mm' }}</p>
     <a [href]="'mailto:' + message.email">{{ message.email }}</a>
-    <p>{{ message.message }}</p>
+    <p class="msg">{{ message.message }}</p>
 
     @if (router.url !== '/handled-messages') {
         <button (click)="markAsHandled(message.id)">Klar</button>

@@ -1,40 +1,41 @@
 <div>
-  <h2>Adminpanelen</h2>
   <p class="welcome">{{ message() }}</p>
 </div>
 
-<div>
-  <h2>Redigera meny</h2>
+<div class="admin-grid">
+  <div class="admin-panel">
+    <h2>Redigera meny</h2>
 
-  <div class="button-group">
+    <div class="button-group">
 
-    <button (click)="activeSection = 'menu'">
-      Meny
-    </button>
+      <button (click)="activeSection = 'menu'">
+        Meny
+      </button>
 
-    <button (click)="activeSection = 'categories'">
-      Kategorier
-    </button>
+      <button (click)="activeSection = 'categories'">
+        Kategorier
+      </button>
 
-    <button (click)="activeSection = 'add'">
-      Lägg till rätt
-    </button>
+      <button (click)="activeSection = 'add'">
+        Lägg till rätt
+      </button>
+    </div>
+    <hr>
+
+    @if(activeSection === 'menu') {
+    <app-menu-management></app-menu-management>
+    }
+
+    @if(activeSection === 'categories') {
+    <app-category-management></app-category-management>
+    }
+
+    @if(activeSection === 'add') {
+    <app-menu-form></app-menu-form>
+    }
   </div>
-  <hr>
 
-  @if(activeSection === 'menu') {
-  <app-menu-management></app-menu-management>
-  }
-
-  @if(activeSection === 'categories') {
-  <app-category-management></app-category-management>
-  }
-
-  @if(activeSection === 'add') {
-  <app-menu-form></app-menu-form>
-  }
-</div>
-
-<div>
-  <app-message-list></app-message-list>
+  <div class="admin-panel">
+    <app-message-list></app-message-list>
+  </div>
 </div>
