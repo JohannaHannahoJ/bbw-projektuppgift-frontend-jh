@@ -36,6 +36,10 @@ app-root {
     flex-direction: column;
 }
 
+main {
+    flex: 1;
+}
+
 body {
     color: var(--text);
     background-color: var(--bg);
@@ -43,8 +47,81 @@ body {
     line-height: 1.5;
 }
 
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    padding-bottom: 1rem;
+}
+
 .message {
     font-weight: 600;
     padding: 1rem;
     border: 1px solid var(--orange);
+}
+
+/* global fokus-state */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border: 2px solid var(--orange);
+}
+
+/* styling för alla forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+}
+
+input,
+textarea,
+select {
+    padding: 0.75rem;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* generell styling knappar */
+button {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    border: none;
+    border-radius: 5px;
+    max-width: 120px;
+
+    cursor: pointer;
+    font-weight: 600;
+    background: var(--yellow);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+}
+
+button:hover {
+    border: 2px solid var(--orange);
+}
+
+button.delete {
+    background: var(--orange);
+}
+
+button.delete:hover {
+    background: var(--yellow);
 }

@@ -1,7 +1,7 @@
 <h2>Redigera meny</h2>
 
 @if (selectedItem) {
-  <app-menu-form [selectedItem]="selectedItem" (closeEdit)="selectedItem = null"></app-menu-form>
+<app-menu-form [selectedItem]="selectedItem" (closeEdit)="selectedItem = null"></app-menu-form>
 }
 
 @for(item of menuItems(); track item.id) {
@@ -14,13 +14,15 @@
 
   <p>{{ item.price }} kr</p>
 
-  <button (click)="editItem(item)">
-    Redigera
-  </button>
+  <div class="button-group">
 
-  <button (click)="deleteItem(item.id!)">
-    Ta bort
-  </button>
+    <button (click)="editItem(item)">
+      Redigera
+    </button>
 
+    <button class="delete" (click)="deleteItem(item.id!)">
+      Ta bort
+    </button>
+  </div>
 </div>
 }

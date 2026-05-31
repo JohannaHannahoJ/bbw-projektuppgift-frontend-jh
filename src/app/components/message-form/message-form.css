@@ -1,0 +1,13 @@
+#contact {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+
+    border: 1px solid var(--green);
+    border-radius: 10px;
+}
+
+.form {
+    max-width: 500px;
+    margin: 0 auto;
+}
