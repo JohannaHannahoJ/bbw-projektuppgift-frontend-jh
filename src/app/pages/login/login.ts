@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { User } from '../../core/models/user';
+import { LoginUser } from '../../core/models/login-user';
 import { FormsModule } from '@angular/forms';
 import { LoginResponse } from '../../core/models/login-response';
 import { AuthService } from '../../core/services/auth.service';
@@ -32,7 +32,7 @@ export class Login {
   }
 
   login(): void {
-    const user: User = {
+    const user: LoginUser = {
       username: this.username,
       password: this.password
     }

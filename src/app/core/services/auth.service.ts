@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../models/user';
+import { LoginUser } from '../models/login-user';
 import { LoginResponse } from '../models/login-response';
 import { Observable, tap } from 'rxjs';
 
@@ -21,7 +21,7 @@ export class AuthService {
   router = inject(Router);
 
   // Logga in
-  login(user: User): Observable<LoginResponse> {
+  login(user: LoginUser): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(this.url + "/users/login", user)
       .pipe(
         tap(response => {
