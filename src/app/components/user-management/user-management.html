@@ -1,1 +1,21 @@
-<p>user-management works!</p>
+<h2>Användare</h2>
+
+@if (statusMessage()) {
+<p class="message">{{ statusMessage() }}</p>
+}
+
+@for (user of users(); track user.id) {
+<div class="user-card">
+    <h3>{{ user.username }}</h3>
+    <p class="level">
+        @if (user.is_admin) {
+        Admin
+        } @else {
+        Användare
+        }
+    </p>
+    <button class="delete" (click)="deleteUser(user.id)">Radera</button>
+    <hr>
+</div>
+}
+<app-user-form></app-user-form>

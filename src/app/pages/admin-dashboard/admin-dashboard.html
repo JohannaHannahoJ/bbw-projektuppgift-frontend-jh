@@ -37,5 +37,9 @@
 
   <div class="admin-panel">
     <app-message-list></app-message-list>
+    <hr>
+    @if(authService.isAdmin()) {
+      <app-user-management></app-user-management>
+    }
   </div>
 </div>
