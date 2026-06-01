@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { firstValueFrom } from 'rxjs';
 import { MenuItem } from '../models/menu-item';
 import { CreateMenuItem } from '../models/create-menu-item';
+import { ApiResponse } from '../models/api-response';
 
 @Injectable({
   providedIn: 'root',
@@ -43,21 +44,21 @@ export class MenuService {
 
   // Skapa meny-item/ rätt
   addMenuItem(menuItem: CreateMenuItem) {
-    return this.http.post(this.url, menuItem, {
+    return this.http.post<ApiResponse>(this.url, menuItem, {
       headers: this.authService.getAuthHeaders()
     });
   }
 
   // Uppdatera Meny-item/rätt
   updateMenuItem(id: number, item: CreateMenuItem) {
-    return this.http.put(`${this.url}/${id}`, item, {
+    return this.http.put<ApiResponse>(`${this.url}/${id}`, item, {
       headers: this.authService.getAuthHeaders()
     });
   }
 
   // Ta bort meny-item
   deleteMenuItem(id: number) {
-    return this.http.delete(`${this.url}/${id}`, {
+    return this.http.delete<ApiResponse>(`${this.url}/${id}`, {
       headers: this.authService.getAuthHeaders()
     });
   }

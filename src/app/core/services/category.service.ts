@@ -4,6 +4,7 @@ import { firstValueFrom } from 'rxjs';
 import { Category } from '../models/category';
 import { AuthService } from './auth.service';
 import { CreateCategory } from '../models/create-category';
+import { ApiResponse } from '../models/api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -42,14 +43,14 @@ export class CategoryService {
 
   // Skapa kategori
   addCategory(createCategory: CreateCategory) {
-    return this.http.post(this.url, createCategory, {
+    return this.http.post<ApiResponse>(this.url, createCategory, {
       headers: this.authService.getAuthHeaders()
     });
   }
 
   // Uppdatera kategori
   updateCategory(id: number, category: CreateCategory) {
-    return this.http.put(`${this.url}/${id}`, category, {
+    return this.http.put<ApiResponse>(`${this.url}/${id}`, category, {
       headers: this.authService.getAuthHeaders()
     });
   }

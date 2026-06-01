@@ -48,7 +48,7 @@ export class MessageService {
 
   // markera som hanterad
   markAsHandled(id: number) {
-    return this.http.put(
+    return this.http.put<ApiResponse>(
       `${this.url}/${id}/handled`, {}, {
       headers: this.authService.getAuthHeaders()
     });
@@ -56,7 +56,7 @@ export class MessageService {
 
   // ta bort
   deleteMessage(id: number) {
-    return this.http.delete(
+    return this.http.delete<ApiResponse>(
       `${this.url}/${id}`, {
       headers: this.authService.getAuthHeaders()
     });
