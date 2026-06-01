@@ -27,6 +27,7 @@ export class CategoryManagement {
         next: () => {
           this.name = "";
           this.message.set("Kategori skapad");
+          this.categoryService.loadCategories();
         },
 
         error: (error) => {
