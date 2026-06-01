@@ -7,7 +7,7 @@
 }
 
 @if (statusMessage()) {
-    <p class="status-message">{{ statusMessage() }}</p>
+    <p class="message">{{ statusMessage() }}</p>
 }
 
 @for (message of filteredMessages; track message.id) {
