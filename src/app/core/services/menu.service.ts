@@ -11,7 +11,7 @@ import { ApiResponse } from '../models/api-response';
 })
 export class MenuService {
   http = inject(HttpClient);
-  url: string = "http://localhost:3000/api/menu";
+  url: string = "https://bbw-projektuppgift-jh.onrender.com/api/menu";
 
   // Auth-hantering (token, headers, login state)
   authService = inject(AuthService);

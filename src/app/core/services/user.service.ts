@@ -11,7 +11,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class UserService {
   http = inject(HttpClient);
-  url: string = "http://localhost:3000/api/users";
+  url: string = "https://bbw-projektuppgift-jh.onrender.com/api/users";
 
   // Signal som lagrar users
   users = signal<User[]>([]);

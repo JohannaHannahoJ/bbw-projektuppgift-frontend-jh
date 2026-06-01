@@ -11,7 +11,7 @@ import { ApiResponse } from '../models/api-response';
 })
 export class MessageService {
   http = inject(HttpClient);
-  url: string = "http://localhost:3000/api/messages";
+  url: string = "https://bbw-projektuppgift-jh.onrender.com/api/messages";
 
   // Auth-hantering (token, headers, login state)
   authService = inject(AuthService);

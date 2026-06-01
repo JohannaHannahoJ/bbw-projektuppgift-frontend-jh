@@ -10,7 +10,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class AuthService {
   private http = inject(HttpClient); // används för http-anrop till backend
-  url: string = "http://localhost:3000/api";
+  url: string = "https://bbw-projektuppgift-jh.onrender.com/api";
 
   token = signal(localStorage.getItem("token") || "");
   username = signal(localStorage.getItem("username") || "");

@@ -11,7 +11,7 @@ import { ApiResponse } from '../models/api-response';
 })
 export class CategoryService {
   http = inject(HttpClient);
-  url: string = "http://localhost:3000/api/categories";
+  url: string = "https://bbw-projektuppgift-jh.onrender.com/api/categories";
 
   // Auth-hantering (token, headers, login state)
   authService = inject(AuthService);
