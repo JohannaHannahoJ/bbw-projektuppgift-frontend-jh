@@ -34,8 +34,14 @@ export class MenuManagement {
 
   // Regigera meny-item
   editItem(item: MenuItem) {
-    //sparar valt item
+    //sparar valt item för att lägga i formuläret
     this.selectedItem = item;
+
+    // Vänta tills DOM är uppdaterat innan scroll
+    setTimeout(() => {
+      document.getElementById('editForm')
+        ?.scrollIntoView({ behavior: 'smooth' }); // scroll till formuläret
+    });
   }
 
   // ta bort item
@@ -57,4 +63,3 @@ export class MenuManagement {
     });
   }
 }
-
