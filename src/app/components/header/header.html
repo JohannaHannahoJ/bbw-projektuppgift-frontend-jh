@@ -11,9 +11,9 @@
     <h1>Lazy Cat</h1>
 
     <nav class="nav-desktop">
-        <a href="#menu">Meny</a>
-        <a href="#about">Om oss</a>
-        <a href="#contact">Kontakt</a>
+        <a [routerLink]="[]" fragment="menu">Meny</a>
+        <a [routerLink]="[]" fragment="about">Om oss</a>
+        <a [routerLink]="[]" fragment="contact">Kontakt</a>
     </nav>
 
     } @else {
@@ -30,8 +30,8 @@
 
 @if (pageType === 'home') {
 <nav class="nav-mobile">
-    <a href="#menu">Meny</a>
-    <a href="#about">Om oss</a>
-    <a href="#contact">Kontakt</a>
+    <a [routerLink]="[]" fragment="menu">Meny</a>
+    <a [routerLink]="[]" fragment="about">Om oss</a>
+    <a [routerLink]="[]" fragment="contact">Kontakt</a>
 </nav>
 }
