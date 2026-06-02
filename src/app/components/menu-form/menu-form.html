@@ -1,53 +1,56 @@
-<h3>
-    @if (selectedItem) {
-    Uppdatera rätt
-    } @else {
-    Lägg till rätt
-    }
-</h3>
-
-<form (ngSubmit)="saveMenuItem()">
-    <div class="form-row">
-        <label for="name">Namn</label>
-        <input type="text" [(ngModel)]="name" id="name" name="name" placeholder="Namn" required>
-    </div>
-    <div class="form-row">
-        <label for="price">Pris</label>
-        <input type="number" [(ngModel)]="price" id="price" name="price" placeholder="Pris" required>
-    </div>
-    <div class="form-row">
-        <label for="description">Beskrivning</label>
-        <textarea [(ngModel)]="description" id="description" name="description" placeholder="Beskrivning"></textarea>
-    </div>
-    <div class="form-row">
-        <select [(ngModel)]="category_id" name="category_id" required>
-            <option value="0">Välj kategori</option>
-            @for(category of categories(); track category.id) {
-            <option [value]="category.id">{{ category.name }}</option>
-            }
-        </select>
-    </div>
-
-    <div class="form-row">
-        <label>
-            <input type="checkbox" [(ngModel)]="is_available" name="is_available">
-            Tillgänglig
-        </label>
-
-        <label>
-            <input type="checkbox" [(ngModel)]="is_offer" name="is_offer">
-            Kampanj
-        </label>
-    </div>
-
-    @if (message()) {<p class="message">{{ message() }}</p>}
-
-    <button type="submit">
+<div id="editForm">
+    <h3>
         @if (selectedItem) {
-        Uppdatera
+        Uppdatera rätt
         } @else {
-        Lägg till
+        Lägg till rätt
         }
-    </button>
+    </h3>
 
-</form>
+    <form (ngSubmit)="saveMenuItem()">
+        <div class="form-row">
+            <label for="name">Namn</label>
+            <input type="text" [(ngModel)]="name" id="name" name="name" placeholder="Namn" required>
+        </div>
+        <div class="form-row">
+            <label for="price">Pris</label>
+            <input type="number" [(ngModel)]="price" id="price" name="price" placeholder="Pris" required>
+        </div>
+        <div class="form-row">
+            <label for="description">Beskrivning</label>
+            <textarea [(ngModel)]="description" id="description" name="description"
+                placeholder="Beskrivning"></textarea>
+        </div>
+        <div class="form-row">
+            <select [(ngModel)]="category_id" name="category_id" required>
+                <option value="0">Välj kategori</option>
+                @for(category of categories(); track category.id) {
+                <option [value]="category.id">{{ category.name }}</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <input type="checkbox" [(ngModel)]="is_available" name="is_available">
+                Tillgänglig
+            </label>
+
+            <label>
+                <input type="checkbox" [(ngModel)]="is_offer" name="is_offer">
+                Kampanj
+            </label>
+        </div>
+
+        @if (message()) {<p class="message">{{ message() }}</p>}
+
+        <button type="submit">
+            @if (selectedItem) {
+            Uppdatera
+            } @else {
+            Lägg till
+            }
+        </button>
+
+    </form>
+</div>
