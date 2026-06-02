@@ -1,0 +1,7 @@
+:host {
+    display: block;
+    padding: 3rem;
+    
+    max-width: 900px;
+    margin: 0 auto;
+}

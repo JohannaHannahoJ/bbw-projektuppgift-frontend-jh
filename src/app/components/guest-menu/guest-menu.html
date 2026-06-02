@@ -1,0 +1,30 @@
+<section class="menu" id="menu">
+    <h2>Meny</h2>
+    <p>Soppa och kaffe ingår alltid!</p>
+
+    @if (menuError()) {
+        <div class="error">
+            {{ menuError() }}
+        </div>
+    }
+
+    @for (category of categories(); track category.id) {
+        @if (getItemsByCategory(category.id).length > 0) {
+            <div class="category">
+                <h3>{{ category.name }}</h3>
+            </div>
+
+        @for (item of getItemsByCategory(category.id); track item.id) {
+            <div class="menu-item">
+                <div class="menu-section">
+                    <h4>{{ item.name }}</h4>
+                    <span>{{ item.price | number:'1.0-0' }} kr</span>
+                </div>
+
+                <p>{{ item.description }}</p>
+            </div>
+        }
+    }
+}
+
+</section>

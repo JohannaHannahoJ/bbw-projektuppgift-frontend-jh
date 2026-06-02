@@ -1,0 +1,65 @@
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable, signal } from '@angular/core';
+import { AuthService } from './auth.service';
+import { firstValueFrom } from 'rxjs';
+import { MenuItem } from '../models/menu-item';
+import { CreateMenuItem } from '../models/create-menu-item';
+import { ApiResponse } from '../models/api-response';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class MenuService {
+  http = inject(HttpClient);
+  url: string = "https://bbw-projektuppgift-jh.onrender.com/api/menu";
+
+  // Auth-hantering (token, headers, login state)
+  authService = inject(AuthService);
+
+  // Signal som lagrar meny-items
+  menuItems = signal<MenuItem[]>([]);
+
+  // signal för felhantering
+  errorMessage = signal("");
+
+  // Hämta meny-items
+  async loadMenuItems(): Promise<void> {
+
+    try {
+      // skickar request till API
+      const items = await firstValueFrom(
+        this.http.get<MenuItem[]>(this.url)
+      );
+
+      //Sparar menu-items i signalen
+      this.menuItems.set(items);
+      this.errorMessage.set(""); // töm ev felmeddelande
+
+
+    } catch (error) {
+      this.errorMessage.set("Just nu går det inte att läsa menyn. Försök igen senare.");
+      console.error(error);
+    }
+  }
+
+  // Skapa meny-item/ rätt
+  addMenuItem(menuItem: CreateMenuItem) {
+    return this.http.post<ApiResponse>(this.url, menuItem, {
+      headers: this.authService.getAuthHeaders()
+    });
+  }
+
+  // Uppdatera Meny-item/rätt
+  updateMenuItem(id: number, item: CreateMenuItem) {
+    return this.http.put<ApiResponse>(`${this.url}/${id}`, item, {
+      headers: this.authService.getAuthHeaders()
+    });
+  }
+
+  // Ta bort meny-item
+  deleteMenuItem(id: number) {
+    return this.http.delete<ApiResponse>(`${this.url}/${id}`, {
+      headers: this.authService.getAuthHeaders()
+    });
+  }
+}

@@ -1,1 +1,45 @@
-<p>admin-dashboard works!</p>
+<div>
+  <p class="welcome">{{ message() }}</p>
+</div>
+
+<div class="admin-grid">
+  <div class="admin-panel">
+    <h2>Redigera meny</h2>
+
+    <div class="button-group">
+
+      <button (click)="activeSection = 'menu'">
+        Meny
+      </button>
+
+      <button (click)="activeSection = 'categories'">
+        Kategorier
+      </button>
+
+      <button (click)="activeSection = 'add'">
+        Lägg till rätt
+      </button>
+    </div>
+    <hr>
+
+    @if(activeSection === 'menu') {
+    <app-menu-management></app-menu-management>
+    }
+
+    @if(activeSection === 'categories') {
+    <app-category-management></app-category-management>
+    }
+
+    @if(activeSection === 'add') {
+    <app-menu-form></app-menu-form>
+    }
+  </div>
+
+  <div class="admin-panel">
+    <app-message-list></app-message-list>
+    <hr>
+    @if(authService.isAdmin()) {
+      <app-user-management></app-user-management>
+    }
+  </div>
+</div>

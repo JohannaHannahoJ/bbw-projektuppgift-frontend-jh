@@ -1,1 +1,29 @@
-<p>message-list works!</p>
+@if (router.url === '/handled-messages') {
+    <h2>Hanterade meddelanden</h2>
+    <a routerLink="/admin-dashboard">Tillbaka till admin-panelen</a>
+} @else {
+    <h2>Nya meddelanden</h2>
+    <a routerLink="/handled-messages">Se hanterade meddelanden</a>
+}
+
+@if (statusMessage()) {
+    <p class="message">{{ statusMessage() }}</p>
+}
+
+@for (message of filteredMessages; track message.id) {
+
+<div class="message-card">
+
+    <h3>{{ message.name }}</h3>
+    <p class="date">{{ message.created_at | date:'yyyy-MM-dd HH:mm' }}</p>
+    <a [href]="'mailto:' + message.email">{{ message.email }}</a>
+    <p class="msg">{{ message.message }}</p>
+
+    @if (router.url !== '/handled-messages') {
+        <button (click)="markAsHandled(message.id)">Klar</button>
+    } @else {
+        <button (click)="deleteMessage(message.id)">Radera</button>
+    }
+</div>
+
+}

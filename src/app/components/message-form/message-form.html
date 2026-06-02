@@ -1,0 +1,22 @@
+<div id="contact">
+    <div class="form">
+        <h2>Kontakta oss</h2>
+
+        @if (statusMessage()) {<p class="message">{{ statusMessage() }}</p>}
+
+        <form (ngSubmit)="addMessage()">
+
+            <label for="name">Namn</label>
+            <input type="text" [(ngModel)]="name" name="name" placeholder="Namn" required>
+            <label for="email">E-post</label>
+            <input type="email" [(ngModel)]="email" name="email" placeholder="E-post" required>
+            <label for="message">Meddelande</label>
+            <textarea [(ngModel)]="message" name="message" placeholder="Skriv ditt meddelande..." required></textarea>
+
+            <button type="submit">
+                Skicka
+            </button>
+
+        </form>
+    </div>
+</div>
